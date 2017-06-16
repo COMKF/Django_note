@@ -1,0 +1,14 @@
+/*
+除了服务器生成的HTML之外，Web应用程序通常需要提供渲染完整网页所需的附加文件（如图像，JavaScript或CSS）。在Django中，我们将这些文件称为“静态文件”。
+django如何处理：它将每个应用程序（以及您指定的任何其他地方）的静态文件收集到单个位置，以便在生产中轻松投放。
+ */
+li a {
+    color: green;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-image: url("images/background.gif");
+    background-color: white;
+}

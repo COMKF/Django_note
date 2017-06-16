@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+{% load static %}   <!-- 该模板标签生成静态文件的绝对路径。 -->
+<!-- 和普通加载CSS文件一样 -->
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head>
+<body>
+<!-- ${requestScope.latest_question_list == null} -->
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <!--
+
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+
+        -->
+        <!--
+        如上面那样，href="/polls/{{ question.id }}。在具有大量模板的项目上更改URL变得非常困难。
+        但是，在Django的url函数里，定义了name参数，就可以通过使用特定的{ url 'name' }标签解决对URL路径的依赖。
+        如果polls/urls.py文件中定义了app_name（即使用了命名空间），则需要用{ url 'app_name:name' }标签。如下所示。
+        这样的话，以后如果想更改URL路径，就直接在polls/urls.py文件中修改就可以了，而不需要在模版上改。
+        -->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+</body>
+</html>
