@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 
-
+# 第一次从model向数据库迁移时，自动生成的文件。它的作用是记录数据库表生成的过程。
 class Migration(migrations.Migration):
 
     initial = True
