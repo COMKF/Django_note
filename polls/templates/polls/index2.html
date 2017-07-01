@@ -1,0 +1,65 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+<div class="app-polls module">
+        <table>
+        <caption>
+            Polls
+        </caption>
+
+            <tbody><tr class="model-question">
+
+                <th scope="row">Questions</th>
+
+
+
+                <td><a href="/polls/templates/polls/add/" class="addlink">添加</a></td>
+
+
+
+                <td><a href="/polls/templates/polls/question/" class="changelink">修改</a></td>
+
+
+            </tr>
+
+        </tbody></table>
+
+
+            <table>
+        <caption>
+            Polls
+        </caption>
+
+            <tbody><tr class="model-question">
+
+
+                <th scope="row">Questions</th>
+
+
+
+                <td><a href="/admin/polls/question/add/" class="addlink">添加</a></td>
+
+
+
+                <td><a href="/admin/polls/question/" class="changelink">修改</a></td>
+
+
+            </tr>
+
+        </tbody></table>
+        </div>
+
+
+</div>
+{% endblock %}

@@ -113,6 +113,7 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())    # 对实例进行过滤，只获取过去的问题。
 
 
+
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
@@ -129,3 +130,18 @@ ListView同理。
 而detail和results等的URL中，有pk这种关键字，必须指定model，否则关键字就无效了，用DetailView。且，DetailView主要用于获取某单个model对象。
 
 '''
+
+
+class addView(generic.ListView):
+    template_name = 'polls/add.html'
+    model = Question
+
+
+class questionView(generic.ListView):
+    template_name = 'polls/question.html'
+    context_object_name = 'latest_question_list'  # 指定传入模版的context对象的变量名，也就是为列表重新命名。
+
+    def get_queryset(self):  # 这个函数，将会获取查询到的列表集，并把结果返回给 context对象。
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+
+

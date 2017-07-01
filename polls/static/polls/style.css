@@ -3,12 +3,13 @@
 django如何处理：它将每个应用程序（以及您指定的任何其他地方）的静态文件收集到单个位置，以便在生产中轻松投放。
  */
 li a {
-    color: green;
+    color: red;
 }
-
+/*
 body {
     background-repeat: no-repeat;
     background-position: right top;
     background-image: url("images/background.gif");
     background-color: white;
 }
+*/

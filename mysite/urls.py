@@ -13,19 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-'''
-from django.conf.urls import url
-from django.contrib import admin
-
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-]
-'''
 from django.conf.urls import include, url
 from django.contrib import admin
 
 '''
-当有人从您的网站请求一个页面 - 例如“/ polls / 34 /”时，
+当有人从网站请求一个页面 - 例如“/ polls / 34 /”时，
 1.Django将加载mysite.urls模块，因为ROOT_URLCONF设置指向它。
 2.它找到mysite.urls中的变量urlpatterns，并按顺序遍历正则表达式。
 3.找到匹配后'^polls/'，它将剥离匹配的文本（"polls/"），并将剩余的文本发送"34/"到“polls.urls”URLconf进行进一步处理。

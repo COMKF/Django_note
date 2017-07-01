@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+<title>Select question to change | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/changelists.css" />
+
+
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class=" app-polls model-question change-list"
+  data-admin-utc-offset="0">
+
+<!-- Container -->
+<div id="container">
+
+
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+
+<h1 id="site-name"><a href="/admin/">Polls Administration</a></h1>
+
+        </div>
+
+    </div>
+    <!-- END Header -->
+
+<div class="breadcrumbs">
+<a href="/admin/">Home</a>
+&rsaquo; <a href="/admin/polls/">Polls</a>
+&rsaquo; Questions
+</div>
+
+
+
+
+
+
+
+    <!-- Content -->
+    <div id="content" class="flex">
+
+        <h1>Select question to change</h1>
+
+  <div id="content-main">
+
+        <ul class="object-tools">
+
+
+            <li>
+
+              <a href="/admin/polls/question/add/" class="addlink">
+                Add question
+              </a>
+            </li>
+
+
+        </ul>
+
+
+    <div class="module filtered" id="changelist">
+
+
+<div id="toolbar"><form id="changelist-search" method="get">
+<div><!-- DIV needed for valid HTML -->
+<label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search" /></label>
+<input type="text" size="40" name="q" value="" id="searchbar" autofocus />
+<input type="submit" value="Search" />
+
+
+</div>
+</form></div>
+
+          <div id="changelist-filter">
+            <h2>Filter</h2>
+
+<h3> By date published </h3>
+<ul>
+
+    <li class="selected">
+    <a href="?" title="Any date">Any date</a></li>
+
+    <li>
+    <a href="?pub_date__gte=2017-06-19+00%3A00%3A00%2B00%3A00&amp;pub_date__lt=2017-06-20+00%3A00%3A00%2B00%3A00" title="Today">Today</a></li>
+
+    <li>
+    <a href="?pub_date__gte=2017-06-12+00%3A00%3A00%2B00%3A00&amp;pub_date__lt=2017-06-20+00%3A00%3A00%2B00%3A00" title="Past 7 days">Past 7 days</a></li>
+
+    <li>
+    <a href="?pub_date__gte=2017-06-01+00%3A00%3A00%2B00%3A00&amp;pub_date__lt=2017-07-01+00%3A00%3A00%2B00%3A00" title="This month">This month</a></li>
+
+    <li>
+    <a href="?pub_date__gte=2017-01-01+00%3A00%3A00%2B00%3A00&amp;pub_date__lt=2018-01-01+00%3A00%3A00%2B00%3A00" title="This year">This year</a></li>
+
+</ul>
+
+          </div>
+
+
+
+      <form id="changelist-form" method="post" novalidate><input type='hidden' name='csrfmiddlewaretoken' value='OM48nguOkLKEOFQd9g2jMlsgfUMVduTBBUptxJrWC1TNu9HFxy4Qm9cRTjFlM7lt' />
+
+
+
+
+<div class="actions">
+    <label>Action: <select name="action" required>
+  <option value="" selected>---------</option>
+
+  <option value="delete_selected">Delete selected questions</option>
+
+</select></label><input type="hidden" name="select_across" value="0" class="select-across" />
+    <button type="submit" class="button" title="Run the selected action" name="index" value="0">Go</button>
+
+        <span class="action-counter" data-actions-icnt="4">0 of 4 selected</span>
+
+
+</div>
+
+
+
+
+<div class="results">
+<table id="result_list">
+<thead>
+<tr>
+
+<th scope="col"  class="action-checkbox-column">
+
+   <div class="text"><span><input type="checkbox" id="action-toggle" /></span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col"  class="sortable column-question_text">
+
+
+
+   <div class="text"><a href="?o=1">Question text</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col"  class="sortable column-pub_date">
+
+
+
+   <div class="text"><a href="?o=2">Date published</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col"  class="sortable column-was_published_recently">
+
+
+
+   <div class="text"><a href="?o=3">Published recently?</a></div>
+   <div class="clear"></div>
+</th>
+</tr>
+</thead>
+<tbody>
+
+
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="4" class="action-select" /></td><th class="field-question_text"><a href="/admin/polls/question/4/change/">很健康</a></th><td class="field-pub_date nowrap">June 16, 2017, 12:40 a.m.</td><td class="field-was_published_recently"><img src="/static/admin/img/icon-no.svg" alt="False" /></td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="3" class="action-select" /></td><th class="field-question_text"><a href="/admin/polls/question/3/change/">hasigi</a></th><td class="field-pub_date nowrap">June 15, 2017, 5:54 a.m.</td><td class="field-was_published_recently"><img src="/static/admin/img/icon-no.svg" alt="False" /></td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="2" class="action-select" /></td><th class="field-question_text"><a href="/admin/polls/question/2/change/">我是你的</a></th><td class="field-pub_date nowrap">June 15, 2017, 4:13 a.m.</td><td class="field-was_published_recently"><img src="/static/admin/img/icon-no.svg" alt="False" /></td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="1" class="action-select" /></td><th class="field-question_text"><a href="/admin/polls/question/1/change/">为什么</a></th><td class="field-pub_date nowrap">June 9, 2017, 2:17 a.m.</td><td class="field-was_published_recently"><img src="/static/admin/img/icon-no.svg" alt="False" /></td></tr>
+
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+<p class="paginator">
+
+4 questions
+
+
+</p>
+
+      </form>
+    </div>
+  </div>
+
+        
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

@@ -12,7 +12,7 @@
 
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}   <!-- 这是一个防出错的标签，只要有表单，就加上它。 -->
-{% for choice in question.choice_set.all %}    <!-- 在循环中发生方法调用： 被解释为Python代码 ，它返回一个可迭代的对象，适合在标签中使用。-->
+{% for choice in question.choice_set.all %}    <!-- 在循环中发生方法调用：被解释为Python代码 ，它返回一个可迭代的对象，适合在标签中使用。-->
     <input type="radio" name="choice" value="{{ choice.id }}" />
     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
 {% endfor %}

@@ -4,6 +4,7 @@
 #     url(r'^$', views.index, name='index'),
 # ]
 from django.conf.urls import url
+from django.contrib import admin
 
 from . import views
 
@@ -39,12 +40,15 @@ urlpatterns = [
 只需要采取几个步骤进行转换
 1.转换URLconf。（修改polls/urls.py文件）
 2.删除一些旧的，不需要的视图。（修改polls/views.py文件）
-3.介绍基于Django通用视图的新视图。
+3.替换成基于Django通用视图的新视图。
 '''
 # 这里修改了 index ， detail ， result 三个URL ，vote 作为参照不修改。
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
+    # url(r'^$', admin.site.urls),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/results/$', views.ResultsView.as_view(), name='results'),
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    url(r'templates/polls/add/$', views.addView.as_view(), name='add'),
+    url(r'templates/polls/question/$', views.questionView.as_view(), name='question'),
 ]

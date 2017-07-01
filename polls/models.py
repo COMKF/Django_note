@@ -66,7 +66,7 @@ polls的PollsConfig配置在polls/apps.py文件中，所以它的虚线路径'po
 
 总体来说，分三步：
 改变你的模型（in models.py）。
-运行以创建这些更改的迁移python manage.py makemigrations polls
+运行以创建这些更改的迁移。python manage.py makemigrations polls
 运行以将这些更改应用于数据库。python manage.py migrate
 '''
 '''
@@ -114,4 +114,23 @@ polls的PollsConfig配置在polls/apps.py文件中，所以它的虚线路径'po
 2.不同的模型字段类型（DateTimeField， CharField）对应于适当的HTML输入小部件。每种类型的字段知道如何在Django管理员中显示自己。
 3.每个都DateTimeField获得免费的JavaScript快捷方式。
 日期获取“Today”快捷方式和日历弹出窗口，并且时间获取“Now”快捷方式和一个方便的弹出窗口，列出常用的时间。
+'''
+
+'''
+-- Create model Choice
+--
+CREATE TABLE "polls_choice" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "choice_text" varchar(200) NOT NULL, "votes" integer NOT NULL);
+--
+-- Create model Question
+--
+CREATE TABLE "polls_question" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "question_text" varchar(200) NOT NULL, "pub_date" datetime NOT NULL);
+--
+-- Add field question to choice
+--
+ALTER TABLE "polls_choice" RENAME TO "polls_choice__old";
+CREATE TABLE "polls_choice" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "choice_text" varchar(200) NOT NULL, "votes" integer NOT NULL, "question_id" integer NOT NULL REFERENCES "polls_question" ("id"));
+INSERT INTO "polls_choice" ("id", "choice_text", "votes", "question_id") SELECT "id", "choice_text", "votes", NULL FROM "polls_choice__old";
+DROP TABLE "polls_choice__old";
+CREATE INDEX "polls_choice_question_id_c5b4b260" ON "polls_choice" ("question_id");
+COMMIT;
 '''
