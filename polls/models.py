@@ -17,13 +17,16 @@ from django.utils import timezone
 A Field也可以有各种可选参数; 在这种情况下，我们将default值 设置votes为0。
 最后，注意一个关系的定义，使用 ForeignKey。这告诉Django每个Choice都与一个相关Question。Django支持所有常见的数据库关系：多对一，多对多和一一对应。
 '''
+
+
 @python_2_unicode_compatible  # only if you need to support Python 2
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')   # 日期类型数据，并定义'date published'作为人类可读的名称。
+    pub_date = models.DateTimeField('date published')  # 日期类型数据，并定义'date published'作为人类可读的名称。
+
     def __str__(self):
-    # 为模型添加__str__()方法非常重要，这不仅在处理交互式提示时方便您使用，还能让管理员通过直观但表示更好但管理Django。
-    # 当在shell窗口下调用Question.objects.all()时，会打印所有的Question，其实调用的就是__str__方法，生成一个Set并返回。
+        # 为模型添加__str__()方法非常重要，这不仅在处理交互式提示时方便您使用，还能让管理员通过直观但表示更好但管理Django。
+        # 当在shell窗口下调用Question.objects.all()时，会打印所有的Question，其实调用的就是__str__方法，生成一个Set并返回。
         return self.question_text
 
     '''
@@ -31,11 +34,13 @@ class Question(models.Model):
         # 这个方法的目的是，判断一个Question实例是不是最近发布的。方法： 发布时间 >= 当前时间 -1
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
     '''
+
     # 我们发现这个方法有缺陷，现在对它进行改进，同时，该方法可以定义虚拟字段
     def was_published_recently(self):
         now = timezone.now()
         # 更改后的方法：昨天<=当前时间<=明天
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+
     # 对was_published_recently方法显示的内容进行定义：boolean属性指定该字段显示为图表，short_description列标题显示内容，admin_order_field排序字段
     was_published_recently.admin_order_field = 'pub_date'
     was_published_recently.boolean = True
@@ -44,11 +49,13 @@ class Question(models.Model):
 
 @python_2_unicode_compatible  # only if you need to support Python 2
 class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)    #设置外健
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)  # 设置外健
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
+
     def __str__(self):
         return self.choice_text
+
 
 '''
 这些模型代码给了Django很多信息。有了它，Django能够：

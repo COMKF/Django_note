@@ -25,9 +25,8 @@ from django.contrib import admin
 5.找到views.py文件，从中找到detail函数，进行视图渲染并返回。
 '''
 urlpatterns = [
-
-    url(r'^polls/', include('polls.urls')), # url()的两个参数，第一个是客户端请求，相当于Servlet，第二个是include函数，它的参数是映射的文件。
-    url(r'^admin/', admin.site.urls),   # url()的两个参数，第一个是客户端请求，相当于Servlet，第二个是视图的函数（一般包含在py文件中）
+    url(r'^polls/', include('polls.urls')),  # url()的两个参数，第一个是客户端请求，相当于Servlet，第二个是include函数，它的参数是映射的文件。
+    url(r'^admin/', admin.site.urls),  # url()的两个参数，第一个是客户端请求，相当于Servlet，第二个是视图的函数（一般包含在py文件中）
 ]
 # 该include()函数允许引用其他URLconfs。include()使即插即用的URL变得容易。
 
