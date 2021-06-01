@@ -52,7 +52,7 @@ Sphinx==1.6.4
 sphinxcontrib-websupport==1.0.1
 tablib==0.12.1
 unicodecsv==0.14.1
-urllib3==1.22
+urllib3==1.26.5
 vine==1.1.4
 wechatpy==1.5.1
 Werkzeug==0.14.1
